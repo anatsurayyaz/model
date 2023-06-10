@@ -10,7 +10,7 @@ from tensorflow import keras
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 global responses, lemmatizer, tokenizer, le, model, input_shape
-input_shape = 14
+input_shape = 21
 
 # import dataset answer
 def load_response():
@@ -27,7 +27,7 @@ def preparation():
     global lemmatizer, tokenizer, le, model
     tokenizer = pickle.load(open('model/tokenizer.pkl', 'rb'))
     le = pickle.load(open('model/label_encoder.pkl', 'rb'))
-    model = keras.models.load_model('model/model.h5')
+    model = keras.models.load_model('model/model.h5', compile=False)
     lemmatizer = StemmerFactory().create_stemmer()
     nltk.download('punkt', quiet=True)
     nltk.download('wordnet', quiet=True)
